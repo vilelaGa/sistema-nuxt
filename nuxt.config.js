@@ -34,6 +34,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     'bootstrap-vue/nuxt',
+    // '@nuxtjs/auth-next',
   ],
 
   styleResources: {
@@ -44,6 +45,28 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/auth',
+            method: 'post',
+            propertyName: 'authenticationToken',
+          },
+          user: {
+            url: '/cursos',
+            method: 'get',
+            propertyName: null,
+          },
+        },
+      },
+    },
+    redirect: {
+      home: '/area-membros',
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
